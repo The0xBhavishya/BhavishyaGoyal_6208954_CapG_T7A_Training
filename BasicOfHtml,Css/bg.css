@@ -1,0 +1,32 @@
+body{
+    background-image:url("https://tinypng.com/images/social/website.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+h1{
+    background: linear-gradient(to right,skyblue,green);
+}
+
+
+#div1{
+    height: auto;
+    width: auto;
+    background-color: yellow;
+    border :2px solid black;
+    float :left;
+    margin: auto;
+}
+
+#div2{
+    height: auto;
+    width: auto;
+    background-color: cyan;
+    border :2px solid black;
+    float :left;
+    margin: auto;
+}
+
+
