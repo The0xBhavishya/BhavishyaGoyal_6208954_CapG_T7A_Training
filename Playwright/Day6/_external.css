@@ -1,0 +1,10 @@
+h1{
+    background-color: aliceblue;
+    font-size: 30px;
+}
+
+h2{
+    background-color: yellowgreen;
+    font-style: oblique;
+    background-position: 10%;
+}

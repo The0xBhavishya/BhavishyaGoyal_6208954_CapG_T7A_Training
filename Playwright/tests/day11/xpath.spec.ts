@@ -1,17 +1,27 @@
-import{test} from "@playwright/test"
+import {test} from "@playwright/test";
+
+test("login using xpath",async({page})=>{
+  
+  await page.goto("https://www.amazon.com/")
+ await page.locator('//input[@id="twotabsearchtextbox"]').fill('samsung phones')
+ await page.locator('//input[@id="nav-search-submit-button"]').click();
+ 
+//  let a =await page.locator('(//span[@class="a-price-whole"])[1]');
+ let a =await page.locator('(//span[@class="a-price-whole"])').first();
+   console.log(await a.textContent());
+
+   
+console.log("second phone ")
+ let b =await page.locator('(//span[@class="a-price-whole"])').nth(2);
 
 
-test("login using xpath", async ({ page }) => {
 
-  await page.goto('https://techbeamers.com/practice-test-login/');
-   await page.locator('//input[@id="username"]').fill('student');
-  await page.locator('//input[@id="password"]').fill('Password123');
-  await page.locator('//button[@id="submit"]').click();
+  console.log(await b.textContent());
+
+
+ 
 
 });
+// //span[text()="19,999"]
 
-// test("playwight",async(page)=>{
-
-
-
-// })
+// <span class="a-price-whole">118,417<span class="a-price-decimal">.</span></span>
