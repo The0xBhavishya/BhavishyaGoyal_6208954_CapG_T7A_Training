@@ -3,8 +3,8 @@ class Career {
     click_career: any
     find_role: any
     univ_role: any
-    select_job: any   // 🔥 added
-    apply_job: any    // 🔥 added
+    select_job: any  
+    apply_job: any    
 
     constructor(page) {
         this.page = page

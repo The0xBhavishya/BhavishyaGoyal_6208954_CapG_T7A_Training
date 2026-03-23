@@ -1,6 +1,7 @@
 import {test} from "@playwright/test"
 import Career from '../../PageObjectModel/career.page.ts'
 import data from '../../../testdata/career.json'
+
 test("amazon ", async({page})=>{
 await page.goto("https://www.amazon.in/");
 const career = new Career(page);

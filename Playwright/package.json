@@ -10,6 +10,15 @@
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "@types/node": "^25.4.0"
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "chai": "^6.2.2",
+    "jest": "^30.3.0",
+    "moca": "^0.4.3",
+    "mocha": "^11.3.0"
   }
 }
