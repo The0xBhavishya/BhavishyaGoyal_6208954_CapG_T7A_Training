@@ -2,6 +2,7 @@ import { test } from "@playwright/test";
 
 test("Dialogues", async ({ page }) => {
 
+    await page.pause()
     page.on("dialog", async(d)=>{
         await page.waitForTimeout(2000)
         if(d.type() =="alert"){

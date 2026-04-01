@@ -30,11 +30,20 @@ test("",async({browser})=>{
     await page.goto('https://demoapps.qspiders.com/ui/download?sublist=0')
     await page.getByPlaceholder('Enter text here').fill("Hello ma'am  :)")
     await page.getByPlaceholder('Filename').fill("hello.txt");
-    let [page2] = await Promise.all([
-        page.waitForEvent('download'),
-        page.locator("button#downloadButton").click()
-    ])
+
+
+    const promise=page.waitForEvent('popup')
+    await page.locator('button#downloadButton').click();
+    const newPage= await promise
+
+
+    // let [page2] = await Promise.all([
+    //     page.waitForEvent('download'),
+    //     page.locator("button#downloadButton").click()
+    // ])
+
+
     console.log(page);
-    console.log(page2);
+    console.log(newPage);
     
 })
