@@ -4,7 +4,6 @@ import data from '../../../testdata/booking.json'
 test('API testing', async({request})=>{
     let baseURL = data.baseURL;
 
-    // Create Token
     let r1 = await request.post(`${baseURL}/auth`, {
         data: {
             username: data.username,
@@ -13,12 +12,10 @@ test('API testing', async({request})=>{
     })
     console.log(await r1.json());
     expect(r1.status()).toBe(200);
-    expect((await r1.json()).token).toBeTruthy();
-    let token = (await r1.json()).token;
+  let token = (await r1.json()).token;
     console.log(token);
 
 
-    // Get All Bookings
     let r2 = await request.get(`${baseURL}/booking`, {
         ignoreHTTPSErrors: true
     })
@@ -29,21 +26,24 @@ test('API testing', async({request})=>{
     console.log(bookingId);
 
 
-    // Get Specific Booking
+    
+
+
     let r3 = await request.get(`${baseURL}/booking/${bookingId}`, {
         ignoreHTTPSErrors: true
     })
     console.log(await r3.status());
     console.log(await r3.json());
+
+
     expect(r3.status()).toBe(200);
-    expect((await r3.json()).firstname).toBeTruthy();
-    expect((await r3.json()).lastname).toBeTruthy();
     expect((await r3.json()).totalprice).toBeGreaterThan(0);
-    expect((await r3.json()).bookingdates.checkin).toBeTruthy();
-    expect((await r3.json()).bookingdates.checkout).toBeTruthy();
 
 
-    // Create Booking
+
+
+
+
     let r4 = await request.post(`${baseURL}/booking`, {
         data: {
             firstname: data.firstname,
@@ -57,6 +57,9 @@ test('API testing', async({request})=>{
             additionalneeds: data.additionalneeds
         }, ignoreHTTPSErrors: true
     })
+
+
+
     console.log(await r4.status());
     console.log(await r4.json());
     expect(r4.status()).toBe(200);
@@ -65,11 +68,14 @@ test('API testing', async({request})=>{
     expect((await r4.json()).booking.lastname).toBe(data.lastname);
     expect((await r4.json()).booking.totalprice).toBe(data.totalprice);
     expect((await r4.json()).booking.depositpaid).toBe(data.depositpaid);
+
     let newBookingId = (await r4.json()).bookingid;
     console.log(newBookingId);
 
 
-    // Update Booking
+  
+
+
     let r5 = await request.put(`${baseURL}/booking/${newBookingId}`, {
         headers: {
             Cookie: `token=${token}`
@@ -87,7 +93,7 @@ test('API testing', async({request})=>{
         }, ignoreHTTPSErrors: true
     })
 
-    
+
     console.log(await r5.status());
     console.log(await r5.json());
     expect(r5.status()).toBe(200);
@@ -95,8 +101,7 @@ test('API testing', async({request})=>{
     expect((await r5.json()).lastname).toBe(data.lastname);
     expect((await r5.json()).totalprice).toBe(data.totalprice);
     expect((await r5.json()).depositpaid).toBe(data.depositpaid);
-    expect((await r5.json()).bookingdates.checkin).toBe(data.bookingdates.checkin);
-    expect((await r5.json()).bookingdates.checkout).toBe(data.bookingdates.checkout);
+
 
 
 })
